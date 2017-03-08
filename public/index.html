@@ -247,6 +247,157 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/leetCode 记录（2）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x-yao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥仙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/07/leetCode 记录（2）/" itemprop="url">
+                  leetCode 记录（2）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T19:34:22+08:00">
+                2017-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="leetCode-记录（2）"><a href="#leetCode-记录（2）" class="headerlink" title="leetCode 记录（2）"></a>leetCode 记录（2）</h2><h3 id="Longest-Substring-Without-Repeating-Characters"><a href="#Longest-Substring-Without-Repeating-Characters" class="headerlink" title="Longest Substring Without Repeating Characters"></a>Longest Substring Without Repeating Characters</h3><blockquote>
+<p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters" target="_blank" rel="external">Longest Substring Without Repeating Characters</a></p>
+</blockquote>
+<h3 id="初始思路"><a href="#初始思路" class="headerlink" title="初始思路"></a>初始思路</h3><ul>
+<li>O(n^2)遍历数组</li>
+<li>把不重复的字符存入数组</li>
+<li>遇到重复的break</li>
+<li>遍历完成获取最后数组的长度</li>
+</ul>
+<h3 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h3><ul>
+<li>时间复杂度问题</li>
+</ul>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code>function lengthOfLongestSubstring(s) {
+    const map = {};
+    var left = 0;
+
+    return s.split(&apos;&apos;).reduce((max, v, i) =&gt; {
+        left = map[v] &gt;= left ? map[v] + 1 : left;
+        map[v] = i;
+        return Math.max(max, i - left + 1);
+    }, 0);
+}
+</code></pre><h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
+<li>上述代码核心是通过扫描求出最长解<ul>
+<li>首先map作为储存每个字符的index位置的变量，left作为最长解的左边位置变量</li>
+<li>其次开始扫描整个字符串，给每个字符存储最后出现的位置在map中</li>
+<li>然后如果出现重复的字符，更新left位置为改字符上次出现的位置的下一个</li>
+<li>每次对比已经存储的最大长度与当前的不重复长度</li>
+</ul>
+</li>
+</ul>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><ul>
+<li>理解上述代码</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/06/Leetcode 记录（1）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -270,7 +421,7 @@
               
                 
                 <a class="post-title-link" href="/2017/03/06/Leetcode 记录（1）/" itemprop="url">
-                  未命名
+                  Leetcode 记录
                 </a>
               
             
@@ -449,7 +600,7 @@ var findPairs = function(nums, k) {
               
                 
                 <a class="post-title-link" href="/2017/03/03/ios 开发（swift）学习 Day1/" itemprop="url">
-                  未命名
+                  ios 开发（swift）学习 Day1
                 </a>
               
             
@@ -596,7 +747,7 @@ var findPairs = function(nums, k) {
               
                 
                 <a class="post-title-link" href="/2017/03/01/Vue 2.0升（tang）级（keng）备忘/" itemprop="url">
-                  未命名
+                  Vue 2.0升（tang）级（keng）备忘
                 </a>
               
             
@@ -749,7 +900,7 @@ var findPairs = function(nums, k) {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -1,3 +1,5 @@
+title: ios 开发（swift）学习 Day1
+---
 ## ios 开发（swift）学习 Day1
 
 ### 为啥学习ios开发

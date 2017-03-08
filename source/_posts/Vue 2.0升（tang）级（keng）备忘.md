@@ -1,3 +1,5 @@
+title: Vue 2.0升（tang）级（keng）备忘
+---
 ## Vue 2.0升（tang）级（keng）备忘
 
 ### 准备工作

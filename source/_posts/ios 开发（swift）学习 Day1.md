@@ -1,4 +1,7 @@
 title: ios 开发（swift）学习 Day1
+categories: ios
+tags:
+  - ios
 ---
 ## ios 开发（swift）学习 Day1
 
@@ -14,6 +17,7 @@ title: ios 开发（swift）学习 Day1
 * 喜欢接触新的东西
 * 作为业余扩展
 
+<!-- more -->
 ### 资料
 
 * [Start Developing iOS Apps (Swift)](https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/index.html#//apple_ref/doc/uid/TP40015214-CH2-SW1)

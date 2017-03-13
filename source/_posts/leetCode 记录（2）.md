@@ -1,4 +1,5 @@
 title: leetCode 记录（2）
+categories: 算法
 ---
 ## leetCode 记录（2）
 
@@ -12,6 +13,7 @@ title: leetCode 记录（2）
 * 遇到重复的break
 * 遍历完成获取最后数组的长度
 
+<!-- more -->
 ### 遇到问题
 
 * 时间复杂度问题

@@ -1,4 +1,7 @@
 title: Vue 2.0升（tang）级（keng）备忘
+categories: 前端
+tags:
+  - vue
 ---
 ## Vue 2.0升（tang）级（keng）备忘
 
@@ -7,6 +10,7 @@ title: Vue 2.0升（tang）级（keng）备忘
 * [官方升级文档](https://cn.vuejs.org/v2/guide/migration.html)
 * [官方升级迁移工具](https://github.com/vuejs/vue-migration-helper)
 
+<!-- more -->
 ### 生命周期
 
 * `ready`，`init`生命周期钩子替换成为`mounted`,`beforeCreate`

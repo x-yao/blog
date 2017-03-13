@@ -1,4 +1,5 @@
 title: Leetcode 记录
+categories: 算法
 ---
 ## Leetcode 记录
 
@@ -12,6 +13,7 @@ title: Leetcode 记录
 * 相减绝对值对比k
 * 算出个数
 
+<!-- more -->
 ### 遇到问题
 
 * 遍历数量多

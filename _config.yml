@@ -45,8 +45,18 @@ highlight:
 
 # Category & Tag
 default_category: uncategorized
-category_map:
-tag_map:
+category_map: 
+  - 站务
+  - 前端
+  - ios
+tag_map: 
+  - nginx
+  - 前端
+  - ios
+  - css
+  - es6
+  - js
+  - 设计
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

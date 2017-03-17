@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>color-transform</title>
+	<script src="https://unpkg.com/vue@2.2.4/dist/vue.min.js"></script>
+	<style>
+		input{
+			-webkit-appearance: none;
+		}
+		html * {
+		    outline: 0;
+		    -webkit-text-size-adjust: none;
+		    -webkit-tap-highlight-color: rgba(0,0,0,0)
+		}
+
+		body{
+			color: #666;
+		}
+		.title{
+			text-align: center;
+   			margin-top: 50px;
+		}
+		.title-item{
+			font-size: 50px;
+		}
+		.color {
+		    width: 20px;
+		    height: 20px;
+		    border:1px solid #CCC;
+		}
+		.bg{
+			width: 100%;
+			height: 100%;
+		}
+		.input{
+			display: flex;
+		    justify-content: center;
+		    margin-top: 20px;
+		    height: 100px;
+		    align-items: center;
+		    border-bottom: 1px solid #CCC;
+		    margin-bottom: 20px;
+		}
+		.color {
+		    width: 40px;
+		    height: 40px;
+		    border: 1px solid #CCC;
+		    margin-right: 20px;
+		}
+		.input-item {
+		    border: 1px solid #CCC;
+		    height: 30px;
+		    padding: 5px;
+		    font-size: 16px;
+		    color: #666;
+		    margin-right: 20px;
+		}
+		.radio:checked {
+		    border: 1px solid #fa8919;
+		}
+		.radio:checked::after {
+		    content: " ";
+		    display: block;
+		    width: 5px;
+		    height: 5px;
+		    background-color: #fa8919;
+		    border-radius: 50%;
+		}
+		.radio {
+		    width: 15px;
+		    height: 15px;
+		    border: 1px solid #666;
+		    border-radius: 50%;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+		label {
+		    margin-right: 10px;
+		    margin-left: 5px;
+		}
+		.type {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    margin-bottom: 10px;
+		}
+		.item {
+		    width: 500px;
+		    display: flex;
+		    align-items: center;
+		    position: relative;
+		}
+		.err {
+		    position: absolute;
+		    top: 45px;
+		    color: #E91E63;
+		    font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="title">
+		<div class="title-item">
+			Color Transform
+		</div>
+		<p>
+			transform rgba,rgb,hex to other type.
+		</p>
+		<p><a href="https://github.com/x-yao/color-transform"><img style="width: 40px" src="data:image/png;base64,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"></a></p>
+	</div>
+	<div id="app">
+		<div class="input">
+			<div class="item">
+				<div class="color" :style="{'background': bg == '255' ? 'white' : 'black'}" v-if="data.type">
+					<div class="bg" :style="{'background':input}" ></div>
+				</div>
+				<input type="text" v-model="input" @blur="validFuc" class="input-item" placeholder="type color here">
+				<input type="radio" class="radio" name="bg" v-model="bg" id="white" value="255" @change="inputChange"><label for="white">white</label>
+				<input type="radio" class="radio" name="bg" v-model="bg" id="black" value="0" @change="inputChange"><label for="black">black</label>
+				<div class="err" v-if="valid && !data.type">请输入正确的色值</div>
+			</div>
+		</div>
+		<div class="output">
+			<div class="type" v-for="it in result">
+				<div class="item">
+					<div class="color" :style="{'background':it}"></div>{{it}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    input: '',
+		    data:{},
+		    bg:'255',
+		    result:[],
+		    valid:false
+		  },
+		  watch:{
+		  	input:function(val){
+		  		this.inputChange()
+		  	}
+		  },
+		  methods: {
+		    inputChange: function () {
+		      this.result = [];
+		      var data = this.data = this.getType();
+		      if (data && data.type == 'hex') {
+		      	this.result.push('rgb('+data.r+','+data.g+','+data.b+')')
+		      }else if(data && data.type == 'rgb'){
+		      	this.result.push('#'+data.r+data.g+data.b)
+		      }else if(data && data.type == 'rgba'){
+		      	var rgbaData = this.rgba();
+		      	this.result.push('rgb('+rgbaData.r.toFixed(0)+','+rgbaData.g.toFixed(0)+','+rgbaData.b.toFixed(0)+')')
+		      	this.result.push('#'+this.leftpad(parseInt(rgbaData.r).toString(16),2)+this.leftpad(parseInt(rgbaData.g).toString(16),2)+this.leftpad(parseInt(rgbaData.b).toString(16),2))
+		      }
+		    },
+		    validFuc:function(){
+		    	this.valid = true;
+		    },
+		    getType: function(){
+		    	var data;
+		    	var input = this.input;
+		    	var regHex = /^#([0-9a-fA-f]{2})([0-9a-fA-f]{2})([0-9a-fA-f]{2})/,
+		    		regRgba = /^rgba\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3}),(1|0.[0-9]*|.[0-9]*)\)/,
+		    		regRgb = /^rgb\(([0-9]{1,3}),([0-9]{1,3}),([0-9]{1,3})\)/
+		    	if (data = input.match(regHex)) {
+		    		return {
+		    			type:'hex',
+		    			r:parseInt(data[1],16).toString(10),
+		    			g:parseInt(data[2],16).toString(10),
+		    			b:parseInt(data[3],16).toString(10)
+		    		}
+		    	}else if(data = input.match(regRgb)){
+		    		return {
+		    			type:'rgb',
+		    			r:this.leftpad(parseInt(data[1]).toString(16),2),
+		    			g:this.leftpad(parseInt(data[2]).toString(16),2),
+		    			b:this.leftpad(parseInt(data[3]).toString(16),2)
+		    		}
+		    	}else if(data = input.match(regRgba)){
+		    		return {
+		    			type:'rgba',
+		    			r:Number(data[1]),
+		    			g:Number(data[2]),
+		    			b:Number(data[3]),
+		    			a:Number(data[4])
+		    		}
+		    	}else{
+		    		return {}
+		    	}
+		    },
+		    rgba:function(){
+		    	var data = this.data;
+		    	var bg = Number(this.bg);
+		    	return {
+		    		r:((1 - data.a) * bg) + (data.a * data.r),
+		    		g:((1 - data.a) * bg) + (data.a * data.g),
+		    		b:((1 - data.a) * bg) + (data.a * data.b)
+		    	}
+		    },
+		    leftpad:function(val,minLength){
+		    	var MANY_ZEROS = "000000000000000000";
+				if (typeof(val) != "string") val = String(val);
+				return (MANY_ZEROS.substring(0, minLength - val.length)) + val;
+		    }
+		  }
+		})
+	</script>
+</body>
+</html>

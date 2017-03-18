@@ -4,6 +4,15 @@
 	<meta charset="UTF-8">
 	<title>color-transform</title>
 	<script src="https://unpkg.com/vue@2.2.4/dist/vue.min.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?164177690ee186638c397a2c4a910d0a";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
 	<style>
 		input{
 			-webkit-appearance: none;
@@ -119,7 +128,7 @@
 				<input type="text" v-model="input" @blur="validFuc" class="input-item" placeholder="type color here">
 				<input type="radio" class="radio" name="bg" v-model="bg" id="white" value="255" @change="inputChange"><label for="white">white</label>
 				<input type="radio" class="radio" name="bg" v-model="bg" id="black" value="0" @change="inputChange"><label for="black">black</label>
-				<div class="err" v-if="valid && !data.type">请输入正确的色值</div>
+				<div class="err" v-if="valid && !data.type">please input right color</div>
 			</div>
 		</div>
 		<div class="output">

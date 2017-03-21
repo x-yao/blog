@@ -264,7 +264,7 @@ var _hmt = _hmt || [];
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/03/20/rgba颜色转化/">
+    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/03/21/Vue组件化（2）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="x-yao">
@@ -286,8 +286,8 @@ var _hmt = _hmt || [];
             
               
                 
-                <a class="post-title-link" href="/2017/03/20/rgba颜色转化/" itemprop="url">
-                  rgba颜色转化
+                <a class="post-title-link" href="/2017/03/21/Vue组件化（2）/" itemprop="url">
+                  Vue 组件化（2）
                 </a>
               
             
@@ -303,8 +303,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T11:58:17+08:00">
-                2017-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T17:58:16+08:00">
+                2017-03-21
               </time>
             
 
@@ -362,14 +362,162 @@ var _hmt = _hmt || [];
 
       
         
-          <h2 id="rgba颜色转化"><a href="#rgba颜色转化" class="headerlink" title="rgba颜色转化"></a>rgba颜色转化</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>有的时候拿到设计稿会发现设计师在对一些非透明的元素标注时使用rgba的颜色，在实际使用中需要把它们转换成十六进制颜色或者其他非含有透明度色值。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/20/rgba颜色转化/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="Vue组件化（2）"><a href="#Vue组件化（2）" class="headerlink" title="Vue组件化（2）"></a>Vue组件化（2）</h2><blockquote>
+<p>这里谈谈业务组件与工具组件和UI组件3方面</p>
+</blockquote>
+<h3 id="业务组件"><a href="#业务组件" class="headerlink" title="业务组件"></a>业务组件</h3><blockquote>
+<p>业务组件是指在业务中需要抽象或者抽离的可复用的包涵业务逻辑的组件</p>
+</blockquote>
+<p>在复杂的页面开发中经常会遇到一些页面包涵很多复杂交互，如果在一个vue组件里面去做整个页面开发会导致代码量过大日后难以维护，所以需要将<strong>一些相对功能独立但是逻辑复杂的模块</strong>抽离成一个个的业务组件。</p>
+<p>一方面业务组件可以作为可复用的模块<strong>在各个页面中重复利用</strong>，而且在相同功能下需要迭代的时候也能够改一处而其他地方同步。另一方面能够理清页面脉络，<strong>避免同一个.vue文件中代码量太大</strong>难以阅读。</p>
+<p><strong>如何做好业务组件：</strong></p>
+<ul>
+<li>页面开发时分割业务模块至不同的.vue文件中</li>
+<li>逻辑相对独立模块需考虑扩展性-比如上传，展示，导出等交互一致视觉一致的模块</li>
+<li>慎复制代码多抽离模块</li>
+<li>业务组件内部逻辑独立，与页面其他功能尽量解耦</li>
+</ul>
+<h3 id="工具组件"><a href="#工具组件" class="headerlink" title="工具组件"></a>工具组件</h3><blockquote>
+<p>工具组件是指项目中的一些公用方法，逻辑等</p>
+</blockquote>
+<p>工具组件相当于项目中常用的util方法，很多方法会在各个vue文件中重复利用到，比如获取url参数，常用格式转换等等。这些方法之前使用import在各个vue组件中调用，后续发现每次还是需要引用，其实可以通过插件的形式对常用方法添加到全局vue实例中，避免在每个vue组件中引入调用。</p>
+<p>核心思路是vue的<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="external">插件方法</a></p>
+<p>在工具组件中设定初始化方法，将util方法注入到vue的<strong>实例方法</strong>中。</p>
+<pre><code>Util.install = function (Vue, options) {
+  添加实例方法
+  Vue.prototype.$myMethod = function (options) {
+    // 逻辑...
+  }
+}
+</code></pre><p>然后在入口页面通过全局方法使用插件</p>
+<pre><code>Vue.use(Util)
+</code></pre><p>这样在改实例下的所有vue组件都能使用该实例方法。</p>
+<h3 id="UI组件"><a href="#UI组件" class="headerlink" title="UI组件"></a>UI组件</h3><blockquote>
+<p>颗粒化的包涵独立功能的组件</p>
+</blockquote>
+<p>UI组件是组件化中比较重要的一个环节也是需要考量最多的组件，这里只是谈一谈UI组件的CSS相关。</p>
+<p>UI组件包含了一个默认的样式，这个样式在绝大部分情况下可以不用修改，但是还是要考虑到特殊情况的<strong>样式可覆盖性</strong>。所以在UI组件中推荐使用<a href="http://getbem.com/introduction/" target="_blank" rel="external"><strong>BEM</strong></a>方式进行css命名。</p>
+<p>使用BEM可以减少样式嵌套，增强可读性，同时也使得组件样式更佳易于被覆盖。也可以优化选择器性能。同时还能减少命名冲突增强服用性。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/03/20/rgba颜色转化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="x-yao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥仙">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/20/rgba颜色转化/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T11:58:17+08:00">
+                2017-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
         
       
     </div>
@@ -1490,7 +1638,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

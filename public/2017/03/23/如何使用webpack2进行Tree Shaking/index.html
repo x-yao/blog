@@ -107,7 +107,7 @@ Tree Shaking
 Tree Shaking这个词最早听说于rollup.js，这个功能能够通过基于ES6 modules的静态特性">
 <meta property="og:image" content="https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png">
 <meta property="og:image" content="https://img.kuaidadi.com/cms/img/upload_1b072a8f87a53e0ff08e16d7714b1068.png">
-<meta property="og:updated_time" content="2017-03-23T08:48:49.000Z">
+<meta property="og:updated_time" content="2017-03-23T08:51:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用webpack2进行Tree Shaking">
 <meta name="twitter:description" content="如何使用webpack2进行Tree Shaking
@@ -455,11 +455,11 @@ const foobar = function () {
 <p>多入口文件多webpack配置</p>
 </blockquote>
 <p>有些情况下我们的webpack入口文件有多个，一般情况我们会设置多入口文件也就是在<code>entry</code>属性中设置一个入口文件列表的map映射。但是在此情况下需要使用Tree Shaking可能遇到一些问题，详见<a href="https://github.com/webpack/webpack/issues/4353" target="_blank" rel="external">Webpack2 with mutli-file entry tree-shaking not behave as expected</a>。</p>
-<p>根据开发者回答是现阶段限制就是这样，需要使用多配置文件进行配置。也就是说，多入口文件相当于如下：</p>
+<p>根据开发者回答是现阶段限制就是这样，需要使用<strong>多配置文件</strong>进行配置。也就是说，多入口文件相当于如下：</p>
 <p><img src="https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png" alt=""></p>
 <p>换成多配置文件就要替换成如下结构：</p>
 <p><img src="https://img.kuaidadi.com/cms/img/upload_1b072a8f87a53e0ff08e16d7714b1068.png" alt=""></p>
-<p>这样就能够达到需求。详见demo：<a href="https://github.com/x-yao/webpack-tree-shaking-demo" target="_blank" rel="external">webpack-tree-shaking-demo</a></p>
+<p>这样就能够达到需求。详见<strong>demo</strong>：<a href="https://github.com/x-yao/webpack-tree-shaking-demo" target="_blank" rel="external">webpack-tree-shaking-demo</a></p>
 
       
     </div>

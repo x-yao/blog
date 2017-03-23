@@ -98,7 +98,7 @@ tags:
 
 有些情况下我们的webpack入口文件有多个，一般情况我们会设置多入口文件也就是在`entry`属性中设置一个入口文件列表的map映射。但是在此情况下需要使用Tree Shaking可能遇到一些问题，详见[Webpack2 with mutli-file entry tree-shaking not behave as expected](https://github.com/webpack/webpack/issues/4353)。
 
-根据开发者回答是现阶段限制就是这样，需要使用多配置文件进行配置。也就是说，多入口文件相当于如下：
+根据开发者回答是现阶段限制就是这样，需要使用**多配置文件**进行配置。也就是说，多入口文件相当于如下：
 
 ![](https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png)
 
@@ -106,6 +106,6 @@ tags:
 
 ![](https://img.kuaidadi.com/cms/img/upload_1b072a8f87a53e0ff08e16d7714b1068.png)
 
-这样就能够达到需求。详见demo：[webpack-tree-shaking-demo](https://github.com/x-yao/webpack-tree-shaking-demo)
+这样就能够达到需求。详见**demo**：[webpack-tree-shaking-demo](https://github.com/x-yao/webpack-tree-shaking-demo)
 
 

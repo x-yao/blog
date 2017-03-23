@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vue," />
+  <meta name="keywords" content="webpack,babel," />
 
 
 
@@ -87,19 +87,37 @@
 
 
 
-<meta name="description" content="Vue组件化（2）
-这里谈谈业务组件与工具组件和UI组件3方面">
+<meta name="description" content="如何使用webpack2进行Tree Shaking
+这篇文章设定读者有一定的webpack基础能够使用webpack2进行基本项目配置。所以具体的配置等没有详细说明，着重说明Tree Shaking这一特性在webpack2中的使用。
+
+Tree Shaking
+消灭没有用到的代码
+
+Tree Shaking这个词最早听说于rollup.js，这个功能能够通过基于ES6 modules的静态特性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue 组件化（2）">
-<meta property="og:url" content="http://www.x-yao.com/2017/03/21/Vue组件化（2）/index.html">
+<meta property="og:title" content="如何使用webpack2进行Tree Shaking">
+<meta property="og:url" content="http://www.x-yao.com/2017/03/23/如何使用webpack2进行Tree Shaking/index.html">
 <meta property="og:site_name" content="逍遥仙">
-<meta property="og:description" content="Vue组件化（2）
-这里谈谈业务组件与工具组件和UI组件3方面">
-<meta property="og:updated_time" content="2017-03-21T10:01:24.000Z">
+<meta property="og:description" content="如何使用webpack2进行Tree Shaking
+这篇文章设定读者有一定的webpack基础能够使用webpack2进行基本项目配置。所以具体的配置等没有详细说明，着重说明Tree Shaking这一特性在webpack2中的使用。
+
+Tree Shaking
+消灭没有用到的代码
+
+Tree Shaking这个词最早听说于rollup.js，这个功能能够通过基于ES6 modules的静态特性">
+<meta property="og:image" content="https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png">
+<meta property="og:image" content="https://img.kuaidadi.com/cms/img/upload_1b072a8f87a53e0ff08e16d7714b1068.png">
+<meta property="og:updated_time" content="2017-03-23T08:48:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue 组件化（2）">
-<meta name="twitter:description" content="Vue组件化（2）
-这里谈谈业务组件与工具组件和UI组件3方面">
+<meta name="twitter:title" content="如何使用webpack2进行Tree Shaking">
+<meta name="twitter:description" content="如何使用webpack2进行Tree Shaking
+这篇文章设定读者有一定的webpack基础能够使用webpack2进行基本项目配置。所以具体的配置等没有详细说明，着重说明Tree Shaking这一特性在webpack2中的使用。
+
+Tree Shaking
+消灭没有用到的代码
+
+Tree Shaking这个词最早听说于rollup.js，这个功能能够通过基于ES6 modules的静态特性">
+<meta name="twitter:image" content="https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png">
 
 
 
@@ -127,7 +145,7 @@
 
 
 
-  <link rel="canonical" href="http://www.x-yao.com/2017/03/21/Vue组件化（2）/"/>
+  <link rel="canonical" href="http://www.x-yao.com/2017/03/23/如何使用webpack2进行Tree Shaking/"/>
 
 
 <script>
@@ -141,7 +159,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title> Vue 组件化（2） | 逍遥仙 </title>
+  <title> 如何使用webpack2进行Tree Shaking | 逍遥仙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +287,7 @@ var _hmt = _hmt || [];
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/03/21/Vue组件化（2）/">
+    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/03/23/如何使用webpack2进行Tree Shaking/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="x-yao">
@@ -290,7 +308,7 @@ var _hmt = _hmt || [];
             
             
               
-                Vue 组件化（2）
+                如何使用webpack2进行Tree Shaking
               
             
           </h2>
@@ -305,8 +323,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-21T17:58:16+08:00">
-                2017-03-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T16:47:46+08:00">
+                2017-03-23
               </time>
             
 
@@ -363,43 +381,85 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="Vue组件化（2）"><a href="#Vue组件化（2）" class="headerlink" title="Vue组件化（2）"></a>Vue组件化（2）</h2><blockquote>
-<p>这里谈谈业务组件与工具组件和UI组件3方面</p>
+        <h2 id="如何使用webpack2进行Tree-Shaking"><a href="#如何使用webpack2进行Tree-Shaking" class="headerlink" title="如何使用webpack2进行Tree Shaking"></a>如何使用webpack2进行Tree Shaking</h2><blockquote>
+<p>这篇文章设定读者有一定的webpack基础能够使用webpack2进行基本项目配置。所以具体的配置等没有详细说明，着重说明Tree Shaking这一特性在webpack2中的使用。</p>
 </blockquote>
+<h3 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h3><blockquote>
+<p>消灭没有用到的代码</p>
+</blockquote>
+<p><strong>Tree Shaking</strong>这个词最早听说于<code>rollup.js</code>，这个功能能够通过基于ES6 modules的静态特性做检测来找出未使用的代码。然后配合<code>uglifyjs</code>把无用代码“筛选”掉。</p>
 <a id="more"></a>
-<h3 id="业务组件"><a href="#业务组件" class="headerlink" title="业务组件"></a>业务组件</h3><blockquote>
-<p>业务组件是指在业务中需要抽象或者抽离的可复用的包涵业务逻辑的组件</p>
-</blockquote>
-<p>在复杂的页面开发中经常会遇到一些页面包涵很多复杂交互，如果在一个vue组件里面去做整个页面开发会导致代码量过大日后难以维护，所以需要将<strong>一些相对功能独立但是逻辑复杂的模块</strong>抽离成一个个的业务组件。</p>
-<p>一方面业务组件可以作为可复用的模块<strong>在各个页面中重复利用</strong>，而且在相同功能下需要迭代的时候也能够改一处而其他地方同步。另一方面能够理清页面脉络，<strong>避免同一个.vue文件中代码量太大</strong>难以阅读。</p>
-<p><strong>如何做好业务组件：</strong></p>
-<ul>
-<li>页面开发时分割业务模块至不同的.vue文件中</li>
-<li>逻辑相对独立模块需考虑扩展性-比如上传，展示，导出等交互一致视觉一致的模块</li>
-<li>慎复制代码多抽离模块</li>
-<li>业务组件内部逻辑独立，与页面其他功能尽量解耦</li>
-</ul>
-<h3 id="工具组件"><a href="#工具组件" class="headerlink" title="工具组件"></a>工具组件</h3><blockquote>
-<p>工具组件是指项目中的一些公用方法，逻辑等</p>
-</blockquote>
-<p>工具组件相当于项目中常用的util方法，很多方法会在各个vue文件中重复利用到，比如获取url参数，常用格式转换等等。这些方法之前使用import在各个vue组件中调用，后续发现每次还是需要引用，其实可以通过插件的形式对常用方法添加到全局vue实例中，避免在每个vue组件中引入调用。</p>
-<p>核心思路是vue的<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="external">插件方法</a></p>
-<p>在工具组件中设定初始化方法，将util方法注入到vue的<strong>实例方法</strong>中。</p>
-<pre><code>Util.install = function (Vue, options) {
-  添加实例方法
-  Vue.prototype.$myMethod = function (options) {
-    // 逻辑...
-  }
+<p>比如在如下场景下：</p>
+<p><strong>util.js</strong></p>
+<pre><code>export const foo = function () {
+    return 1
 }
-</code></pre><p>然后在入口页面通过全局方法使用插件</p>
-<pre><code>Vue.use(Util)
-</code></pre><p>这样在改实例下的所有vue组件都能使用该实例方法。</p>
-<h3 id="UI组件"><a href="#UI组件" class="headerlink" title="UI组件"></a>UI组件</h3><blockquote>
-<p>颗粒化的包涵独立功能的组件</p>
+
+export const bar = function () {
+    return 2
+}
+
+export const foobar = function () {
+    return 3
+}
+</code></pre><p><strong>bar.js</strong></p>
+<pre><code>import {bar} from &apos;./util&apos;
+const a = bar();
+</code></pre><p>我们使用<code>foo.js</code>作为入口文件，自然希望webpack编译后只把<code>util.js</code>里面的<code>bar</code>变量引入到最终生成的文件，而其他没有用掉的能够被“优化”掉。Tree Shaking就是为了解决上述问题。</p>
+<p>最通常的情况就是我们项目中有某个公用方法文件，但是可能不同入口文件能够使用的方法很有限，这样会产生很多无用的方法打包到最后的文件当中。Tree Shaking则能够移除由此产生的大量冗余代码，达到优化的目的。</p>
+<h3 id="在webpack2中使用Tree-Shaking"><a href="#在webpack2中使用Tree-Shaking" class="headerlink" title="在webpack2中使用Tree Shaking"></a>在webpack2中使用Tree Shaking</h3><h4 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h4><p>还是以上述两个代码作为例子。设置<code>bar</code>作为入口文件，最后编译出的代码如下：</p>
+<pre><code>&quot;use strict&quot;;
+const foo = function () {
+    return 1
+}
+/* unused harmony export foo */
+
+
+const bar = function () {
+    return 2
+}
+/* harmony export (immutable) */ __webpack_exports__[&quot;a&quot;] = bar;
+
+
+const foobar = function () {
+    return 3
+}
+/* unused harmony export foobar */
+</code></pre><p>可见<code>foo</code>,<code>foobar</code>这两个变量已经被定义为<strong>unused</strong>而未exports出来，再经过<strong>压缩</strong>后便没有了这两个变量的代码。</p>
+<h4 id="配合Babel"><a href="#配合Babel" class="headerlink" title="配合Babel"></a>配合Babel</h4><blockquote>
+<p>移除<code>CommonJS</code>模块</p>
 </blockquote>
-<p>UI组件是组件化中比较重要的一个环节也是需要考量最多的组件，这里只是谈一谈UI组件的CSS相关。</p>
-<p>UI组件包含了一个默认的样式，这个样式在绝大部分情况下可以不用修改，但是还是要考虑到特殊情况的<strong>样式可覆盖性</strong>。所以在UI组件中推荐使用<a href="http://getbem.com/introduction/" target="_blank" rel="external"><strong>BEM</strong></a>方式进行css命名。</p>
-<p>使用BEM可以减少样式嵌套，增强可读性，同时也使得组件样式更佳易于被覆盖。也可以优化选择器性能。同时还能减少命名冲突增强服用性。</p>
+<p>在实际生产环境当中我们通常使用<code>babel</code>来编译模块化代码，但是初次使用会发现当配合<code>babel</code>是会导致<code>Tree Shaking</code>失效，原因大多是因为<strong>使用了<code>CommonJS</code>编译模块</strong>导致webpack基于ES6 modules的静态分析失效。所以我们需要在<code>babel</code>配置中<strong>去掉<code>CommonJS</code>模块</strong>。<br>比如使用如下配置：</p>
+<pre><code>plugins: [  
+            &apos;transform-es2015-template-literals&apos;,  
+            &apos;transform-es2015-literals&apos;,  
+            &apos;transform-es2015-function-name&apos;,  
+            &apos;transform-es2015-arrow-functions&apos;,  
+            &apos;transform-es2015-block-scoped-functions&apos;,  
+            &apos;transform-es2015-classes&apos;,  
+            &apos;transform-es2015-object-super&apos;,  
+            &apos;transform-es2015-shorthand-properties&apos;,  
+            &apos;transform-es2015-computed-properties&apos;,  
+            &apos;transform-es2015-for-of&apos;,  
+            &apos;transform-es2015-sticky-regex&apos;,  
+            &apos;transform-es2015-unicode-regex&apos;,  
+            &apos;check-es2015-constants&apos;,  
+            &apos;transform-es2015-spread&apos;,  
+            &apos;transform-es2015-parameters&apos;,  
+            &apos;transform-es2015-destructuring&apos;,  
+            &apos;transform-es2015-block-scoping&apos;,  
+            &apos;transform-es2015-typeof-symbol&apos;,  
+            [&apos;transform-regenerator&apos;, {async: false, asyncGenerators: false}]
+        ]
+</code></pre><h4 id="配合多入口文件"><a href="#配合多入口文件" class="headerlink" title="配合多入口文件"></a>配合多入口文件</h4><blockquote>
+<p>多入口文件多webpack配置</p>
+</blockquote>
+<p>有些情况下我们的webpack入口文件有多个，一般情况我们会设置多入口文件也就是在<code>entry</code>属性中设置一个入口文件列表的map映射。但是在此情况下需要使用Tree Shaking可能遇到一些问题，详见<a href="https://github.com/webpack/webpack/issues/4353" target="_blank" rel="external">Webpack2 with mutli-file entry tree-shaking not behave as expected</a>。</p>
+<p>根据开发者回答是现阶段限制就是这样，需要使用多配置文件进行配置。也就是说，多入口文件相当于如下：</p>
+<p><img src="https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png" alt=""></p>
+<p>换成多配置文件就要替换成如下结构：</p>
+<p><img src="https://img.kuaidadi.com/cms/img/upload_1b072a8f87a53e0ff08e16d7714b1068.png" alt=""></p>
+<p>这样就能够达到需求。详见demo：<a href="https://github.com/x-yao/webpack-tree-shaking-demo" target="_blank" rel="external">webpack-tree-shaking-demo</a></p>
 
       
     </div>
@@ -423,7 +483,9 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag"># vue</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+            <a href="/tags/babel/" rel="tag"># babel</a>
           
         </div>
       
@@ -436,8 +498,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/20/rgba颜色转化/" rel="next" title="rgba颜色转化">
-                <i class="fa fa-chevron-left"></i> rgba颜色转化
+              <a href="/2017/03/21/Vue组件化（2）/" rel="next" title="Vue 组件化（2）">
+                <i class="fa fa-chevron-left"></i> Vue 组件化（2）
               </a>
             
           </div>
@@ -445,10 +507,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/23/如何使用webpack2进行Tree Shaking/" rel="prev" title="如何使用webpack2进行Tree Shaking">
-                如何使用webpack2进行Tree Shaking <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -593,7 +651,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue组件化（2）"><span class="nav-number">1.</span> <span class="nav-text">Vue组件化（2）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务组件"><span class="nav-number">1.1.</span> <span class="nav-text">业务组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具组件"><span class="nav-number">1.2.</span> <span class="nav-text">工具组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UI组件"><span class="nav-number">1.3.</span> <span class="nav-text">UI组件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用webpack2进行Tree-Shaking"><span class="nav-number">1.</span> <span class="nav-text">如何使用webpack2进行Tree Shaking</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-Shaking"><span class="nav-number">1.1.</span> <span class="nav-text">Tree Shaking</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在webpack2中使用Tree-Shaking"><span class="nav-number">1.2.</span> <span class="nav-text">在webpack2中使用Tree Shaking</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础使用"><span class="nav-number">1.2.1.</span> <span class="nav-text">基础使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配合Babel"><span class="nav-number">1.2.2.</span> <span class="nav-text">配合Babel</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配合多入口文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">配合多入口文件</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, blog, 前端, javascript, 技术, css, vue" />
+  <meta name="keywords" content="table,css," />
 
 
 
@@ -87,34 +87,38 @@
 
 
 
-<meta name="description" content="Leetcode 记录K-diff Pairs in an Array
-K-diff Pairs in an Array
+<meta name="description" content="固定表头以及首列的实现前言最近被需求了一个交互性很复杂的表格组件，不仅包含了列行的收起展开动态配置，还有一个难点就是首列和表头要求固定。这里就说一说这一功能的一种实现。
+固定表头固定表头的实现可以参考下图：
 
-初始思路
-O(n^2)遍历数组
-相减绝对值对比k
-算出个数">
+将表格分为两部分，上面部分只绘制表头部分，下面滚动区域使用元素包裹后设置overflow属性和高度达到滚动的目的。
+固定表列固定列的实现和表头基本一致可以参考下图：
+
+将表格分为左右两部分，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode 记录">
-<meta property="og:url" content="http://www.x-yao.com/2017/03/06/Leetcode 记录（1）/index.html">
+<meta property="og:title" content="固定表头以及首列的实现">
+<meta property="og:url" content="http://www.x-yao.com/2017/04/13/固定表头以及首列的实现/index.html">
 <meta property="og:site_name" content="逍遥仙">
-<meta property="og:description" content="Leetcode 记录K-diff Pairs in an Array
-K-diff Pairs in an Array
+<meta property="og:description" content="固定表头以及首列的实现前言最近被需求了一个交互性很复杂的表格组件，不仅包含了列行的收起展开动态配置，还有一个难点就是首列和表头要求固定。这里就说一说这一功能的一种实现。
+固定表头固定表头的实现可以参考下图：
 
-初始思路
-O(n^2)遍历数组
-相减绝对值对比k
-算出个数">
-<meta property="og:updated_time" content="2017-03-13T06:27:02.000Z">
+将表格分为两部分，上面部分只绘制表头部分，下面滚动区域使用元素包裹后设置overflow属性和高度达到滚动的目的。
+固定表列固定列的实现和表头基本一致可以参考下图：
+
+将表格分为左右两部分，">
+<meta property="og:image" content="http://img.kuaidadi.com/cms/img/upload_fdd0f6ac6caa5a8d7da510ef89638db9.png">
+<meta property="og:image" content="http://img.kuaidadi.com/cms/img/upload_796fbaeebf6479e66afd3596c4cd7378.png">
+<meta property="og:image" content="http://img.kuaidadi.com/cms/img/upload_3bcc91c3b97561bce89ecc04dc702fc0.png">
+<meta property="og:updated_time" content="2017-04-13T11:47:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leetcode 记录">
-<meta name="twitter:description" content="Leetcode 记录K-diff Pairs in an Array
-K-diff Pairs in an Array
+<meta name="twitter:title" content="固定表头以及首列的实现">
+<meta name="twitter:description" content="固定表头以及首列的实现前言最近被需求了一个交互性很复杂的表格组件，不仅包含了列行的收起展开动态配置，还有一个难点就是首列和表头要求固定。这里就说一说这一功能的一种实现。
+固定表头固定表头的实现可以参考下图：
 
-初始思路
-O(n^2)遍历数组
-相减绝对值对比k
-算出个数">
+将表格分为两部分，上面部分只绘制表头部分，下面滚动区域使用元素包裹后设置overflow属性和高度达到滚动的目的。
+固定表列固定列的实现和表头基本一致可以参考下图：
+
+将表格分为左右两部分，">
+<meta name="twitter:image" content="http://img.kuaidadi.com/cms/img/upload_fdd0f6ac6caa5a8d7da510ef89638db9.png">
 
 
 
@@ -142,7 +146,7 @@ O(n^2)遍历数组
 
 
 
-  <link rel="canonical" href="http://www.x-yao.com/2017/03/06/Leetcode 记录（1）/"/>
+  <link rel="canonical" href="http://www.x-yao.com/2017/04/13/固定表头以及首列的实现/"/>
 
 
 <script>
@@ -156,7 +160,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-  <title> Leetcode 记录 | 逍遥仙 </title>
+  <title> 固定表头以及首列的实现 | 逍遥仙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -284,7 +288,7 @@ var _hmt = _hmt || [];
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/03/06/Leetcode 记录（1）/">
+    <link itemprop="mainEntityOfPage" href="http://www.x-yao.com/2017/04/13/固定表头以及首列的实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="x-yao">
@@ -305,7 +309,7 @@ var _hmt = _hmt || [];
             
             
               
-                Leetcode 记录
+                固定表头以及首列的实现
               
             
           </h2>
@@ -320,8 +324,8 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-06T18:07:33+08:00">
-                2017-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T19:46:50+08:00">
+                2017-04-13
               </time>
             
 
@@ -343,8 +347,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
                   </a>
                 </span>
 
@@ -378,69 +382,20 @@ var _hmt = _hmt || [];
       
 
       
-        <h2 id="Leetcode-记录"><a href="#Leetcode-记录" class="headerlink" title="Leetcode 记录"></a>Leetcode 记录</h2><h3 id="K-diff-Pairs-in-an-Array"><a href="#K-diff-Pairs-in-an-Array" class="headerlink" title="K-diff Pairs in an Array"></a>K-diff Pairs in an Array</h3><blockquote>
-<p><a href="https://leetcode.com/problems/k-diff-pairs-in-an-array/?tab=Description" target="_blank" rel="external">K-diff Pairs in an Array</a></p>
-</blockquote>
-<h3 id="初始思路"><a href="#初始思路" class="headerlink" title="初始思路"></a>初始思路</h3><ul>
-<li>O(n^2)遍历数组</li>
-<li>相减绝对值对比k</li>
-<li>算出个数</li>
-</ul>
-<a id="more"></a>
-<h3 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h3><ul>
-<li>遍历数量多<ul>
-<li>（解决）先排序，然后遍历出第一个结果则break</li>
-</ul>
-</li>
-<li>会出现重复统计<ul>
-<li>（解决）使用临时对象储存已经遍历出来的配对</li>
-<li>（新问题）会出现(0,1),(0,-1)这样2种情况的配对，单个对象存储是被覆盖</li>
-<li>（解决）临时两个对象存放同一键值2个状态</li>
-</ul>
-</li>
-</ul>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code>/**
- * @param {number[]} nums
- * @param {number} k
- * @return {number}
- */
-var findPairs = function(nums, k) {
-    var ap = {},
-        ad = {}
-    var p = 0;
-    var sort = nums.sort(function(a,b){
-            return b-a});
-    for(var i = 0;i&lt;sort.length;i++){
-        for(var n = i+1;n&lt;sort.length;n++){
-            var p1 = sort[i],
-                p2 = sort[n]
-            if(Math.abs(p1-p2) === k){
-                if(ap[p1] == p2 || ad[p1] == p2 || ap[p2] == p1 || ad[p2] == p1){
-                    break;
-                }
-                if( ((ap[p1] !== undefined) &amp;&amp; (ap[p1] != p2)) || ((ap[p2] !== undefined) &amp;&amp; (ap[p2] != p1) )){
-                    ad[p1] = p2;
-                    ad[p2] = p1
-                }else{
-                    ap[p1] = p2;
-                    ap[p2] = p1 
-                }
-                p++
-            }
-        }
-    }
-    return p
-};
-</code></pre><h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
-<li>复杂代码理解能力不够，无法完整预演算，需要debug调试。</li>
-<li>思考问题不够仔细很多问题点没思考出来，运算出问题才去找。</li>
-<li>复杂度问题没有解决，依旧不是最优处理，需要继续思考。</li>
-</ul>
-<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><ul>
-<li>训练基本排序，等数据操作算法</li>
-<li>加强手写代码能力与理解能力</li>
-<li>减少debug依赖</li>
-</ul>
+        <h2 id="固定表头以及首列的实现"><a href="#固定表头以及首列的实现" class="headerlink" title="固定表头以及首列的实现"></a>固定表头以及首列的实现</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近被需求了一个交互性很复杂的表格组件，不仅包含了列行的收起展开动态配置，还有一个难点就是首列和表头要求固定。这里就说一说这一功能的一种实现。</p>
+<h3 id="固定表头"><a href="#固定表头" class="headerlink" title="固定表头"></a>固定表头</h3><p>固定表头的实现可以参考下图：</p>
+<p><img src="http://img.kuaidadi.com/cms/img/upload_fdd0f6ac6caa5a8d7da510ef89638db9.png" alt=""></p>
+<p>将表格分为两部分，上面部分只绘制表头部分，下面滚动区域使用元素包裹后设置<code>overflow</code>属性和高度达到滚动的目的。</p>
+<h3 id="固定表列"><a href="#固定表列" class="headerlink" title="固定表列"></a>固定表列</h3><p>固定列的实现和表头基本一致可以参考下图：</p>
+<p><img src="http://img.kuaidadi.com/cms/img/upload_796fbaeebf6479e66afd3596c4cd7378.png" alt=""></p>
+<p>将表格分为左右两部分，上面部分只绘制表头部分，下面滚动区域使用元素包裹后设置<code>overflow</code>属性和宽度达到滚动的目的。</p>
+<p>不过这个只是一种实现思路，也可以通过在表列或者表头上覆盖一个单独的列或者头进行固定，相对于最外层进行绝对定位同样可以实现，这个不多说。</p>
+<h3 id="同时固定表头与表列"><a href="#同时固定表头与表列" class="headerlink" title="同时固定表头与表列"></a>同时固定表头与表列</h3><p>这种情况要复杂很多，而且还需要借助js的运算打到目的。具体实现思路图如下：</p>
+<p><img src="http://img.kuaidadi.com/cms/img/upload_3bcc91c3b97561bce89ecc04dc702fc0.png" alt=""></p>
+<p>首先需要使用元素包裹住整个右侧区域使之进行横向滚动，然后在其内部实现固定表头的效果。</p>
+<p>需要注意的是<strong>其中R部分同时也要做到可滑动且跟着数据区块上下同时滑动</strong>，这部分就需要使用js来操作两边滑动的一致性了。</p>
+<p>起初是监听两边的<code>scroll</code>事件，然后同时设置两边<code>scrollTop</code>值来打到两边的同步。但是在实践的过程中发现由于滑动速度的问题偶现出现两列不对齐的情况造成体验上很不好的情况，尝试解决未果于是改换思路使用css<code>transform</code>进行模拟同步滚动。最后达到了比较好的效果，但是在实现两边互相一致的时候出现了<code>transform</code>与<code>scroll</code>冲突的问题，暂时未能解决于是降级方案为只能通过滚动数据区域来滚动固定的第一列。（element貌似也是一样的情况）于是乎就完成了固定表头以及首列的实现。</p>
+<h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>稍后补充</p>
 
       
     </div>
@@ -462,6 +417,14 @@ var findPairs = function(nums, k) {
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/table/" rel="tag"># table</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
 
       
         
@@ -471,8 +434,8 @@ var findPairs = function(nums, k) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/03/ios 开发（swift）学习 Day1/" rel="next" title="ios 开发（swift）学习 Day1">
-                <i class="fa fa-chevron-left"></i> ios 开发（swift）学习 Day1
+              <a href="/2017/03/23/如何使用webpack2进行Tree Shaking/" rel="next" title="如何使用webpack2进行Tree Shaking">
+                <i class="fa fa-chevron-left"></i> 如何使用webpack2进行Tree Shaking
               </a>
             
           </div>
@@ -480,10 +443,6 @@ var findPairs = function(nums, k) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/07/leetCode 记录（2）/" rel="prev" title="leetCode 记录（2）">
-                leetCode 记录（2） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +587,7 @@ var findPairs = function(nums, k) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Leetcode-记录"><span class="nav-number">1.</span> <span class="nav-text">Leetcode 记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#K-diff-Pairs-in-an-Array"><span class="nav-number">1.1.</span> <span class="nav-text">K-diff Pairs in an Array</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始思路"><span class="nav-number">1.2.</span> <span class="nav-text">初始思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到问题"><span class="nav-number">1.3.</span> <span class="nav-text">遇到问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">1.4.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">1.5.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO"><span class="nav-number">1.6.</span> <span class="nav-text">TODO</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#固定表头以及首列的实现"><span class="nav-number">1.</span> <span class="nav-text">固定表头以及首列的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定表头"><span class="nav-number">1.2.</span> <span class="nav-text">固定表头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#固定表列"><span class="nav-number">1.3.</span> <span class="nav-text">固定表列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同时固定表头与表列"><span class="nav-number">1.4.</span> <span class="nav-text">同时固定表头与表列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DEMO"><span class="nav-number">1.5.</span> <span class="nav-text">DEMO</span></a></li></ol></li></ol></div>
             
 
           </div>

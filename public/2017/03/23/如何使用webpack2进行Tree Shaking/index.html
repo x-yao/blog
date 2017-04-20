@@ -107,7 +107,7 @@ Tree Shaking
 Tree Shaking这个词最早听说于rollup.js，这个功能能够通过基于ES6 modules的静态特性">
 <meta property="og:image" content="https://img.kuaidadi.com/cms/img/upload_6c65d0dcb41eabff3e01245ca8fc671c.png">
 <meta property="og:image" content="https://img.kuaidadi.com/cms/img/upload_1b072a8f87a53e0ff08e16d7714b1068.png">
-<meta property="og:updated_time" content="2017-03-23T08:51:08.000Z">
+<meta property="og:updated_time" content="2017-04-20T04:05:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用webpack2进行Tree Shaking">
 <meta name="twitter:description" content="如何使用webpack2进行Tree Shaking
@@ -391,67 +391,20 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <p>比如在如下场景下：</p>
 <p><strong>util.js</strong></p>
-<pre><code>export const foo = function () {
-    return 1
-}
-
-export const bar = function () {
-    return 2
-}
-
-export const foobar = function () {
-    return 3
-}
-</code></pre><p><strong>bar.js</strong></p>
-<pre><code>import {bar} from &apos;./util&apos;
-const a = bar();
-</code></pre><p>我们使用<code>foo.js</code>作为入口文件，自然希望webpack编译后只把<code>util.js</code>里面的<code>bar</code>变量引入到最终生成的文件，而其他没有用掉的能够被“优化”掉。Tree Shaking就是为了解决上述问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> foobar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>bar.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;bar&#125; <span class="keyword">from</span> <span class="string">'./util'</span></div><div class="line"><span class="keyword">const</span> a = bar();</div></pre></td></tr></table></figure>
+<p>我们使用<code>foo.js</code>作为入口文件，自然希望webpack编译后只把<code>util.js</code>里面的<code>bar</code>变量引入到最终生成的文件，而其他没有用掉的能够被“优化”掉。Tree Shaking就是为了解决上述问题。</p>
 <p>最通常的情况就是我们项目中有某个公用方法文件，但是可能不同入口文件能够使用的方法很有限，这样会产生很多无用的方法打包到最后的文件当中。Tree Shaking则能够移除由此产生的大量冗余代码，达到优化的目的。</p>
 <h3 id="在webpack2中使用Tree-Shaking"><a href="#在webpack2中使用Tree-Shaking" class="headerlink" title="在webpack2中使用Tree Shaking"></a>在webpack2中使用Tree Shaking</h3><h4 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h4><p>还是以上述两个代码作为例子。设置<code>bar</code>作为入口文件，最后编译出的代码如下：</p>
-<pre><code>&quot;use strict&quot;;
-const foo = function () {
-    return 1
-}
-/* unused harmony export foo */
-
-
-const bar = function () {
-    return 2
-}
-/* harmony export (immutable) */ __webpack_exports__[&quot;a&quot;] = bar;
-
-
-const foobar = function () {
-    return 3
-}
-/* unused harmony export foobar */
-</code></pre><p>可见<code>foo</code>,<code>foobar</code>这两个变量已经被定义为<strong>unused</strong>而未exports出来，再经过<strong>压缩</strong>后便没有了这两个变量的代码。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="keyword">const</span> foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/* unused harmony export foo */</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">const</span> bar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/* harmony export (immutable) */</span> __webpack_exports__[<span class="string">"a"</span>] = bar;</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">const</span> foobar = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/* unused harmony export foobar */</span></div></pre></td></tr></table></figure>
+<p>可见<code>foo</code>,<code>foobar</code>这两个变量已经被定义为<strong>unused</strong>而未exports出来，再经过<strong>压缩</strong>后便没有了这两个变量的代码。</p>
 <h4 id="配合Babel"><a href="#配合Babel" class="headerlink" title="配合Babel"></a>配合Babel</h4><blockquote>
 <p>移除<code>CommonJS</code>模块</p>
 </blockquote>
 <p>在实际生产环境当中我们通常使用<code>babel</code>来编译模块化代码，但是初次使用会发现当配合<code>babel</code>是会导致<code>Tree Shaking</code>失效，原因大多是因为<strong>使用了<code>CommonJS</code>编译模块</strong>导致webpack基于ES6 modules的静态分析失效。所以我们需要在<code>babel</code>配置中<strong>去掉<code>CommonJS</code>模块</strong>。<br>比如使用如下配置：</p>
-<pre><code>plugins: [  
-            &apos;transform-es2015-template-literals&apos;,  
-            &apos;transform-es2015-literals&apos;,  
-            &apos;transform-es2015-function-name&apos;,  
-            &apos;transform-es2015-arrow-functions&apos;,  
-            &apos;transform-es2015-block-scoped-functions&apos;,  
-            &apos;transform-es2015-classes&apos;,  
-            &apos;transform-es2015-object-super&apos;,  
-            &apos;transform-es2015-shorthand-properties&apos;,  
-            &apos;transform-es2015-computed-properties&apos;,  
-            &apos;transform-es2015-for-of&apos;,  
-            &apos;transform-es2015-sticky-regex&apos;,  
-            &apos;transform-es2015-unicode-regex&apos;,  
-            &apos;check-es2015-constants&apos;,  
-            &apos;transform-es2015-spread&apos;,  
-            &apos;transform-es2015-parameters&apos;,  
-            &apos;transform-es2015-destructuring&apos;,  
-            &apos;transform-es2015-block-scoping&apos;,  
-            &apos;transform-es2015-typeof-symbol&apos;,  
-            [&apos;transform-regenerator&apos;, {async: false, asyncGenerators: false}]
-        ]
-</code></pre><h4 id="配合多入口文件"><a href="#配合多入口文件" class="headerlink" title="配合多入口文件"></a>配合多入口文件</h4><blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">plugins: [  </div><div class="line">	        <span class="string">'transform-es2015-template-literals'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-literals'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-function-name'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-arrow-functions'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-block-scoped-functions'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-classes'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-object-super'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-shorthand-properties'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-computed-properties'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-for-of'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-sticky-regex'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-unicode-regex'</span>,  </div><div class="line">	        <span class="string">'check-es2015-constants'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-spread'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-parameters'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-destructuring'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-block-scoping'</span>,  </div><div class="line">	        <span class="string">'transform-es2015-typeof-symbol'</span>,  </div><div class="line">	        [<span class="string">'transform-regenerator'</span>, &#123;<span class="attr">async</span>: <span class="literal">false</span>, <span class="attr">asyncGenerators</span>: <span class="literal">false</span>&#125;]</div><div class="line">	    ]</div></pre></td></tr></table></figure>
+<h4 id="配合多入口文件"><a href="#配合多入口文件" class="headerlink" title="配合多入口文件"></a>配合多入口文件</h4><blockquote>
 <p>多入口文件多webpack配置</p>
 </blockquote>
 <p>有些情况下我们的webpack入口文件有多个，一般情况我们会设置多入口文件也就是在<code>entry</code>属性中设置一个入口文件列表的map映射。但是在此情况下需要使用Tree Shaking可能遇到一些问题，详见<a href="https://github.com/webpack/webpack/issues/4353" target="_blank" rel="external">Webpack2 with mutli-file entry tree-shaking not behave as expected</a>。</p>

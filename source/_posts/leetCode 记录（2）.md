@@ -19,6 +19,8 @@ categories: 算法
 * 时间复杂度问题
 
 ### 结果
+
+```javascript
 	function lengthOfLongestSubstring(s) {
 	    const map = {};
 	    var left = 0;
@@ -29,6 +31,7 @@ categories: 算法
 	        return Math.max(max, i - left + 1);
 	    }, 0);
 	}
+```
 
 ### 思考
 * 上述代码核心是通过扫描求出最长解

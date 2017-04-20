@@ -25,7 +25,9 @@ tags:
 
 antd和element的具体思路就是组件作为npm包，除了拥有集合所有组件的index文件外各个组件可以单独作用并打包出来然后通过
 
+```javascript
 	import Button from 'ui/lib/button';
+```
 	
 这样的方式进行单独加载。或者使用`antd`的 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 做语法转换。
 

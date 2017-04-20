@@ -19,22 +19,26 @@ tags:
 
 **util.js**
 
-        export const foo = function () {
-	        return 1
-        }
+```javascript
+		export const foo = function () {
+		    return 1
+		}
 
-        export const bar = function () {
-	        return 2
-        }
+		export const bar = function () {
+		    return 2
+		}
 
-        export const foobar = function () {
-	        return 3
-        }
+		export const foobar = function () {
+		    return 3
+		}
+```
         
 **bar.js**
     
+```javascript
        import {bar} from './util'
        const a = bar();
+```
        
 我们使用`foo.js`作为入口文件，自然希望webpack编译后只把`util.js`里面的`bar`变量引入到最终生成的文件，而其他没有用掉的能够被“优化”掉。Tree Shaking就是为了解决上述问题。
 
@@ -45,6 +49,7 @@ tags:
 #### 基础使用
 还是以上述两个代码作为例子。设置`bar`作为入口文件，最后编译出的代码如下：
 
+```javascript
 		"use strict";
 		const foo = function () {
 			return 1
@@ -62,6 +67,7 @@ tags:
 			return 3
 		}
 		/* unused harmony export foobar */
+```
 
 可见`foo`,`foobar `这两个变量已经被定义为**unused**而未exports出来，再经过**压缩**后便没有了这两个变量的代码。
 
@@ -71,6 +77,7 @@ tags:
 在实际生产环境当中我们通常使用`babel`来编译模块化代码，但是初次使用会发现当配合`babel`是会导致`Tree Shaking`失效，原因大多是因为**使用了`CommonJS`编译模块**导致webpack基于ES6 modules的静态分析失效。所以我们需要在`babel`配置中**去掉`CommonJS`模块**。
 比如使用如下配置：
 
+```javascript
 		plugins: [  
 			        'transform-es2015-template-literals',  
 			        'transform-es2015-literals',  
@@ -92,6 +99,7 @@ tags:
 			        'transform-es2015-typeof-symbol',  
 			        ['transform-regenerator', {async: false, asyncGenerators: false}]
 			    ]
+```
 
 #### 配合多入口文件
 > 多入口文件多webpack配置

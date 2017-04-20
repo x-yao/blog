@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://www.x-yao.com/2017/03/20/rgba颜色转化/index.html">
 <meta property="og:site_name" content="逍遥仙">
 <meta property="og:description" content="rgba颜色转化前言有的时候拿到设计稿会发现设计师在对一些非透明的元素标注时使用rgba的颜色，在实际使用中需要把它们转换成十六进制颜色或者其他非含有透明度色值。">
-<meta property="og:updated_time" content="2017-03-21T10:06:38.000Z">
+<meta property="og:updated_time" content="2017-04-20T04:06:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rgba颜色转化">
 <meta name="twitter:description" content="rgba颜色转化前言有的时候拿到设计稿会发现设计师在对一些非透明的元素标注时使用rgba的颜色，在实际使用中需要把它们转换成十六进制颜色或者其他非含有透明度色值。">
@@ -364,11 +364,8 @@ var _hmt = _hmt || [];
 <a id="more"></a>
 <h3 id="转化"><a href="#转化" class="headerlink" title="转化"></a>转化</h3><p>rgba是在rgb色值的基础上添加了透明度<code>a</code>通道的颜色，它通常等同于相应的rgb颜色外加<code>opacity</code>属性作为替代<code>a</code>通道。所以如果需要把它转化成非透明颜色就<strong>需要考虑到它的底色作为一个整合</strong>。</p>
 <p>我们一般拿底色作为一个底色，这个底色一般使用白色或者黑色。然后通过下面的公式来叠加底色与rgba源色算出叠加后的rgb色值。</p>
-<pre><code>Source =&gt; Target = (BGColor + Source) =
-Target.R = ((1 - Source.A) * BGColor.R) + (Source.A * Source.R)
-Target.G = ((1 - Source.A) * BGColor.G) + (Source.A * Source.G)
-Target.B = ((1 - Source.A) * BGColor.B) + (Source.A * Source.B)
-</code></pre><p>比如，底色为白色，<code>BGColor</code>的R,G,B通道都是<strong>255</strong>，源色为<code>rgba(50,240,100,.4)</code>，那么公式核算出颜色就是<code>rgb(173,249,193)</code>。如果底色是黑色，则核算出的颜色为<code>rgb(20,96,40)</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Source =&gt; Target = (BGColor + Source) =</div><div class="line">Target.R = ((<span class="number">1</span> - Source.A) * BGColor.R) + (Source.A * Source.R)</div><div class="line">Target.G = ((<span class="number">1</span> - Source.A) * BGColor.G) + (Source.A * Source.G)</div><div class="line">Target.B = ((<span class="number">1</span> - Source.A) * BGColor.B) + (Source.A * Source.B)</div></pre></td></tr></table></figure>
+<p>比如，底色为白色，<code>BGColor</code>的R,G,B通道都是<strong>255</strong>，源色为<code>rgba(50,240,100,.4)</code>，那么公式核算出颜色就是<code>rgb(173,249,193)</code>。如果底色是黑色，则核算出的颜色为<code>rgb(20,96,40)</code>。</p>
 <h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><p>使用<a href="https://www.x-yao.com/color-transform.html"><strong>color-transform</strong></a>可以进行rgb，rgba，十六进制色值的相互转化，比如rgba可以转化成十六进制和rgb，十六进制和rgb之间可以相互转化。</p>
 <p><strong>github地址</strong>:<a href="https://github.com/x-yao/color-transform" target="_blank" rel="external">https://github.com/x-yao/color-transform</a></p>
 

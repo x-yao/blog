@@ -32,16 +32,20 @@ tags:
 
 在工具组件中设定初始化方法，将util方法注入到vue的**实例方法**中。
 
+```javascript
 		Util.install = function (Vue, options) {
 		  添加实例方法
 		  Vue.prototype.$myMethod = function (options) {
 		    // 逻辑...
 		  }
 		}
+```
 		
 然后在入口页面通过全局方法使用插件
 
+```javascript
 		Vue.use(Util)
+```
 
 这样在改实例下的所有vue组件都能使用该实例方法。
 

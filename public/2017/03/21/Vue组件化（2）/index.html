@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="逍遥仙">
 <meta property="og:description" content="Vue组件化（2）
 这里谈谈业务组件与工具组件和UI组件3方面">
-<meta property="og:updated_time" content="2017-03-21T10:01:24.000Z">
+<meta property="og:updated_time" content="2017-04-20T04:06:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue 组件化（2）">
 <meta name="twitter:description" content="Vue组件化（2）
@@ -385,15 +385,10 @@ var _hmt = _hmt || [];
 <p>工具组件相当于项目中常用的util方法，很多方法会在各个vue文件中重复利用到，比如获取url参数，常用格式转换等等。这些方法之前使用import在各个vue组件中调用，后续发现每次还是需要引用，其实可以通过插件的形式对常用方法添加到全局vue实例中，避免在每个vue组件中引入调用。</p>
 <p>核心思路是vue的<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="external">插件方法</a></p>
 <p>在工具组件中设定初始化方法，将util方法注入到vue的<strong>实例方法</strong>中。</p>
-<pre><code>Util.install = function (Vue, options) {
-  添加实例方法
-  Vue.prototype.$myMethod = function (options) {
-    // 逻辑...
-  }
-}
-</code></pre><p>然后在入口页面通过全局方法使用插件</p>
-<pre><code>Vue.use(Util)
-</code></pre><p>这样在改实例下的所有vue组件都能使用该实例方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Util.install = <span class="function"><span class="keyword">function</span> (<span class="params">Vue, options</span>) </span>&#123;</div><div class="line">  添加实例方法</div><div class="line">  Vue.prototype.$myMethod = <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</div><div class="line">    <span class="comment">// 逻辑...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在入口页面通过全局方法使用插件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vue.use(Util)</div></pre></td></tr></table></figure>
+<p>这样在改实例下的所有vue组件都能使用该实例方法。</p>
 <h3 id="UI组件"><a href="#UI组件" class="headerlink" title="UI组件"></a>UI组件</h3><blockquote>
 <p>颗粒化的包涵独立功能的组件</p>
 </blockquote>

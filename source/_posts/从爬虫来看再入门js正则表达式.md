@@ -41,19 +41,27 @@ tags:
 
 接下里开始匹配p标签并且取出里面的内容
 		
+```javascript
 		<p>123</p>
+```
 
 使用下面的正则即可，其中非贪婪模式很简单的避免了多个相同标签时匹配不正确的问题，不过需要注意[性能问题](http://www.regexlab.com/zh/regtopic.htm#rel%0Ctant)
 
+```javascript
 		/<p>(.*?)<\/p>/
+```
 		
 如果要取出某些属性的标签比如
 
+```javascript
 		<p id="321">123</p>
+```
 
 则可以使用如下正则
 
+```javascript
 		/<p id="([^"]*)">(.*?)<\/p>/
+```
 		
 这样就能够简单快速解决html里面各种标签的数据获取问题
 ### 筛选
@@ -63,15 +71,16 @@ tags:
 
 所以如果我们需要拿到所有p标签的id和内容，可以使用如下代码
 
-		var html = '<p id="1">a</p><p id="2">b</p><p id="3">c</p>'
+```javascript
+	    var html = '<p id="1">a</p><p id="2">b</p><p id="3">c</p>';
 		var reg = /<p id="([^"]*)">(.*?)<\/p>/g;
 		var result;
-		
 		while ((result = reg.exec(html)) != null)  {
 		  	console.log(result[1],result[2])
 		}
 		//1 a
 		//2 b
 		//3 c
-		
+```	
+
 至此，对于绝大部分网页内容分析筛选的工作都可以使用简单的正则快速的完成了。

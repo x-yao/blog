@@ -93,7 +93,7 @@
 <meta property="og:url" content="http://www.x-yao.com/2017/03/16/从爬虫来看再入门js正则表达式/index.html">
 <meta property="og:site_name" content="逍遥仙">
 <meta property="og:description" content="从爬虫来看再入门js正则表达式前言最近有个需求，需要一体化爬一个页面数据，第一版的时候是通过在页面运行js脚本来遍历DOM来处理数据，由于要一体化，需要node去获取页面文档然后通过正则表达式去把需要的数据筛选出来。所以就再次入门js正则表达式。">
-<meta property="og:updated_time" content="2017-03-16T06:35:47.000Z">
+<meta property="og:updated_time" content="2017-04-20T04:11:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从爬虫来看再入门js正则表达式">
 <meta name="twitter:description" content="从爬虫来看再入门js正则表达式前言最近有个需求，需要一体化爬一个页面数据，第一版的时候是通过在页面运行js脚本来遍历DOM来处理数据，由于要一体化，需要node去获取页面文档然后通过正则表达式去把需要的数据筛选出来。所以就再次入门js正则表达式。">
@@ -396,30 +396,30 @@ var _hmt = _hmt || [];
 </ul>
 <p>上面几个概念就是我们所需要的所有东西了。</p>
 <p>接下里开始匹配p标签并且取出里面的内容</p>
-<pre><code>&lt;p&gt;123&lt;/p&gt;
-</code></pre><p>使用下面的正则即可，其中非贪婪模式很简单的避免了多个相同标签时匹配不正确的问题，不过需要注意<a href="http://www.regexlab.com/zh/regtopic.htm#rel%0Ctant" target="_blank" rel="external">性能问题</a></p>
-<pre><code>/&lt;p&gt;(.*?)&lt;\/p&gt;/
-</code></pre><p>如果要取出某些属性的标签比如</p>
-<pre><code>&lt;p id=&quot;321&quot;&gt;123&lt;/p&gt;
-</code></pre><p>则可以使用如下正则</p>
-<pre><code>/&lt;p id=&quot;([^&quot;]*)&quot;&gt;(.*?)&lt;\/p&gt;/
-</code></pre><p>这样就能够简单快速解决html里面各种标签的数据获取问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;<span class="number">123</span>&lt;<span class="regexp">/p&gt;</span></div></pre></td></tr></table></figure>
+<p>使用下面的正则即可，其中非贪婪模式很简单的避免了多个相同标签时匹配不正确的问题，不过需要注意<a href="http://www.regexlab.com/zh/regtopic.htm#rel%0Ctant" target="_blank" rel="external">性能问题</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/&lt;p&gt;(.*?)&lt;\/p&gt;<span class="regexp">/</span></div></pre></td></tr></table></figure>
+<p>如果要取出某些属性的标签比如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p id=<span class="string">"321"</span>&gt;<span class="number">123</span>&lt;<span class="regexp">/p&gt;</span></div></pre></td></tr></table></figure>
+<p>则可以使用如下正则</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/&lt;p id="([^"]*)"&gt;(.*?)&lt;\/p&gt;<span class="regexp">/</span></div></pre></td></tr></table></figure>
+<p>这样就能够简单快速解决html里面各种标签的数据获取问题</p>
 <h3 id="筛选"><a href="#筛选" class="headerlink" title="筛选"></a>筛选</h3><blockquote>
 <p>对于匹配出来的数据，特别是我们需要全局匹配并且拿到想要数据的时候就需要继续通过筛选来拿出需要的数据。</p>
 </blockquote>
 <p>在JavaScript中，如果想要获取某次匹配的数据可以使用<code>String.match(RegExp)</code>方法。不过该方法只能获取一次的匹配结果，如果需要匹配大段文本中多次的结果就需要使用<a href="http://www.w3school.com.cn/jsref/jsref_exec_regexp.asp" target="_blank" rel="external"><code>RegExp.exec(string)</code></a>方法进行匹配。</p>
 <p>所以如果我们需要拿到所有p标签的id和内容，可以使用如下代码</p>
-<pre><code>var html = &apos;&lt;p id=&quot;1&quot;&gt;a&lt;/p&gt;&lt;p id=&quot;2&quot;&gt;b&lt;/p&gt;&lt;p id=&quot;3&quot;&gt;c&lt;/p&gt;&apos;
-var reg = /&lt;p id=&quot;([^&quot;]*)&quot;&gt;(.*?)&lt;\/p&gt;/g;
-var result;
-
-while ((result = reg.exec(html)) != null)  {
-      console.log(result[1],result[2])
+<pre><code class="javascript"><span class="keyword">var</span> html = <span class="string">'&lt;p id="1"&gt;a&lt;/p&gt;&lt;p id="2"&gt;b&lt;/p&gt;&lt;p id="3"&gt;c&lt;/p&gt;'</span>;
+<span class="keyword">var</span> reg = <span class="regexp">/&lt;p id="([^"]*)"&gt;(.*?)&lt;\/p&gt;/g</span>;
+<span class="keyword">var</span> result;
+<span class="keyword">while</span> ((result = reg.exec(html)) != <span class="literal">null</span>)  {
+      <span class="built_in">console</span>.log(result[<span class="number">1</span>],result[<span class="number">2</span>])
 }
-//1 a
-//2 b
-//3 c
-</code></pre><p>至此，对于绝大部分网页内容分析筛选的工作都可以使用简单的正则快速的完成了。</p>
+<span class="comment">//1 a</span>
+<span class="comment">//2 b</span>
+<span class="comment">//3 c</span>
+</code></pre>
+<p>至此，对于绝大部分网页内容分析筛选的工作都可以使用简单的正则快速的完成了。</p>
 
       
     </div>

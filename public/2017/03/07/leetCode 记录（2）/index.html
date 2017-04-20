@@ -107,7 +107,7 @@ O(n^2)遍历数组
 把不重复的字符存入数组
 遇到重复的break
 遍历完成获取最后数组的长度">
-<meta property="og:updated_time" content="2017-03-13T06:23:52.000Z">
+<meta property="og:updated_time" content="2017-04-20T04:06:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetCode 记录（2）">
 <meta name="twitter:description" content="leetCode 记录（2）Longest Substring Without Repeating Characters
@@ -394,17 +394,8 @@ var _hmt = _hmt || [];
 <h3 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h3><ul>
 <li>时间复杂度问题</li>
 </ul>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><pre><code>function lengthOfLongestSubstring(s) {
-    const map = {};
-    var left = 0;
-
-    return s.split(&apos;&apos;).reduce((max, v, i) =&gt; {
-        left = map[v] &gt;= left ? map[v] + 1 : left;
-        map[v] = i;
-        return Math.max(max, i - left + 1);
-    }, 0);
-}
-</code></pre><h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">lengthOfLongestSubstring</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> map = &#123;&#125;;</div><div class="line">    <span class="keyword">var</span> left = <span class="number">0</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> s.split(<span class="string">''</span>).reduce(<span class="function">(<span class="params">max, v, i</span>) =&gt;</span> &#123;</div><div class="line">        left = map[v] &gt;= left ? map[v] + <span class="number">1</span> : left;</div><div class="line">        map[v] = i;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.max(max, i - left + <span class="number">1</span>);</div><div class="line">    &#125;, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
 <li>上述代码核心是通过扫描求出最长解<ul>
 <li>首先map作为储存每个字符的index位置的变量，left作为最长解的左边位置变量</li>
 <li>其次开始扫描整个字符串，给每个字符存储最后出现的位置在map中</li>

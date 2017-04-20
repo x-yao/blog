@@ -24,6 +24,8 @@ categories: 算法
 	* （解决）临时两个对象存放同一键值2个状态
 
 ### 结果
+
+```javascript
 	/**
 	 * @param {number[]} nums
 	 * @param {number} k
@@ -56,6 +58,7 @@ categories: 算法
 	    }
 	    return p
 	};
+```
 
 ### 思考
 * 复杂代码理解能力不够，无法完整预演算，需要debug调试。
